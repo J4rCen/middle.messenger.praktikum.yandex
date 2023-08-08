@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "start": "node server.cjs"
+    "start": "tsc && vite build && node server.cjs"
   },
   "devDependencies": {
     "@types/node": "^20.4.8",
