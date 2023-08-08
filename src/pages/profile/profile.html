@@ -1,0 +1,35 @@
+{{#> layout/page title="Chat"}}
+
+    {{#menu}}
+
+    <div class="menu__title_profile">
+        <figure class="context-profile__figure">
+            <a href="../menu/menu.html"><img class="img__context-profile" src="../../images/profile/backward.png" alt="Вернуться назад"></a>
+        </figure>
+        <p class="menu__title_profile__section_titles">Профиль</p>
+    </div>
+
+    <div class="profile__information">
+        <div class="profile__information__avatar">
+            <figure class="profile__figure__avatar">
+                <img class="profile__img__avatar" src="" alt="">
+            </figure>    
+        </div>
+
+        {{> profile__information/profile__information class="profile__information__email" descriptions="Почта:" information="test@test.ru"}}
+        {{> profile__information/profile__information class="profile__information__login" descriptions="Логин:" information="Danil"}}
+        {{> profile__information/profile__information class="profile__information__firtsName" descriptions="Имя:" information="Данил"}}
+
+        {{> profile__information/profile__information class="profile__information__lastName" descriptions="Фамилия:" information="Давлетов"}}
+        {{> profile__information/profile__information class="profile__information__chatName" descriptions="Имя в чате:" information="Danil04"}}
+        {{> profile__information/profile__information class="profile__information__fhon" descriptions="Номер телефона:" information="+7 000 000 00 00"}}
+
+        <div class="profile__buttons">
+            {{> button/button class="size_h25_w180 bg_color_50AF8A" label="Изменить данные"}}
+            <a href="../change_password/change_password.html">{{> button/button class="size_h25_w180 bg_color_50AF8A" label="Изменить пароль"}}</a>
+        </div>
+    </div>
+
+    {{/ menu}}
+
+{{/ layout/page}}
