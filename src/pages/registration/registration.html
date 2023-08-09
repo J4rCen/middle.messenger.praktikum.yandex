@@ -1,16 +1,18 @@
 {{#> layout/page title="Authorization Page"}}
 
     {{# card}}
-        <div class="login-form__buttons-selection">
+        <div class="login-form__buttons-selection display_flex">
            <a href="../login/login.html">{{> button/button class="buttons-selection__authorization size_h40_w150" label="Авторизация"}}</a> 
             {{> button/button class="buttons-selection__registration size_h40_w150 bg_color_50AF8A" label="Регистрация"}}
         </div>
 
 
-        <form class="login-form__authorization" action="../menu/menu.html">
-            {{> input/input name="login" class="text-input authorization_input" type="text" placeholder="Имя пользователя" }}
+        <form class="form__registration login-form__authorization" action="../menu/menu.html">
+            {{> input/input name="first_name" class="text-input authorization_input" type="text" placeholder="Имя" }}
+            {{> input/input name="second_name" class="text-input authorization_input" type="text" placeholder="Фамилия" }}
+            {{> input/input name="login" class="text-input authorization_input" type="text" placeholder="Логин" }}
             {{> input/input name="email" class="email-input authorization_input" type="email" placeholder="Почта" }}
-            {{> input/input name="phon" class="phone_number-input authorization_input" type="number" placeholder="Номер телефона" }}
+            {{> input/input name="phone" class="phone_number-input authorization_input" type="number" placeholder="Номер телефона" }}
             {{> input/input name="password" class="password-input authorization_input" type="password" placeholder="Пароль" }}
             {{> input/input name="repit_password" class="password-input authorization_input" type="password" placeholder="Потверждения пароля" }}
             {{> button/button class="authorization_buttons size_h25_w180 bg_color_50AF8A" label="Зарегистрироваться"}}

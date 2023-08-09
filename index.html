@@ -1,18 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Page selection menu</title>
   </head>
   <body>
-    <a href="/src/pages/login/login.html">login</a>
-    <a href="/src/pages/registration/registration.html">registration</a>
-    <a href="/src/pages/menu/menu.html">menu</a>
-    <a href="/src/pages/profile/profile.html">profile</a>
-    <a href="/src/pages/change_password/change_password.html">change_password</a>
-    <a href="/src/pages/error_404/error_404.html">error_404</a>
-    <a href="/src/pages/error_500/error_500.html">error_500</a>
+    <nav class="page_navigation_menu">
+      <ul class="page_navigation_menu__list">
+        <li class="page_navigation_menu__items">Страница логина: <a href="/src/pages/login/login.html">login</a></li>
+        <li class="page_navigation_menu__items">Страница регистрации: <a href="/src/pages/registration/registration.html">registration</a></li>
+        <li class="page_navigation_menu__items">Страница меню: <a href="/src/pages/menu/menu.html">menu</a></li>
+        <li class="page_navigation_menu__items">Страница профиля: <a href="/src/pages/profile/profile.html">profile</a></li>
+        <li class="page_navigation_menu__items">Страница изменения данных: <a href="/src/pages/data_changes/data_changes.html">data_changes</a></li>
+        <li class="page_navigation_menu__items">Страница изменения пароля: <a href="/src/pages/change_password/change_password.html">change_password</a></li>
+        <li class="page_navigation_menu__items">Страница ошибки 404: <a href="/src/pages/error_404/error_404.html">error_404</a></li>
+        <li class="page_navigation_menu__items">Страница ошибки 500: <a href="/src/pages/error_500/error_500.html">error_500</a></li>
+      </ul>
+    </nav>
   </body>
 </html>

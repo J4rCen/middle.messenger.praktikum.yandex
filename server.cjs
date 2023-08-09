@@ -4,5 +4,5 @@ const PORT = 3000;
 
 app.use(express.static(`${__dirname}/dist`));
 app.listen(PORT, () => {
-    console.log(`Сервер запущен ${PORT}`)
+    console.log(`Сервер запущен на ${PORT} порту`)
 })
