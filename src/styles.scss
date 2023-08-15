@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    background-color: rgb(152, 152, 152);
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+@import "repetitive_styles.scss";
+
+// Pages
+
+@import "pages/menu/menu.scss";
+@import "pages/profile/profile.scss";
+
+// Layouts
+
+@import "layouts/card/card.scss";
+@import "layouts/menu/menu.scss";
+
+// Partials
+
+@import "partials/button/button.scss";
+@import "partials/input/input.scss";
+@import "partials/profile__information/profile__information.scss";
+@import "partials/error/error.scss";
+@import "partials/friend/friend.scss";

@@ -1,0 +1,20 @@
+.section__error_information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    gap: 20px;
+}
+
+.section__error_number {
+    color: white;
+    font-size: 36px;
+}
+
+.section__error_descriptions {
+    color: white;
+    font-size: 24px;
+}
