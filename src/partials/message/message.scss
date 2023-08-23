@@ -1,0 +1,25 @@
+.messsage__setting {
+    padding: 10px;
+    max-width: 500px;
+    border-radius: 20px;
+}
+
+
+.outgoing__message__div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.outgoing__message__div > .type_of__message {
+    background-color: darkblue;
+}
+
+.incoming__message__div {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.incoming__message__div > .type_of__message {
+    background: silver;
+}
+

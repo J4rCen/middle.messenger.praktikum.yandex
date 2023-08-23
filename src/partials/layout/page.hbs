@@ -7,11 +7,14 @@
     <link rel="stylesheet" href="../../styles.scss">
 </head>
 <body>
-    <main>
-        
+    <main class="main">
+
         {{> @partial-block}}
 
+        {{#if authorized}}
+            {{> chat/chat}}
+        {{/if}}
+
     </main>
-    
 </body>
 </html>

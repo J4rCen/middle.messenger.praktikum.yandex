@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.hide {
+    display: none;
+}
+
 .form__gap_10px__display_grid {
     display: grid;
     gap: 10px;
@@ -14,6 +18,16 @@
     justify-items: center;
     gap: 20px;
     margin-top: 20px;
+}
+
+.form__error_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__error_messages {
+    color: rgb(255, 0, 0);
+    font-size: 14px;
 }
 
 // Данные стили повторяються в файлах profile, data_changes и change_password.

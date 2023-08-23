@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-body { 
+body {
     background-color: rgb(152, 152, 152);
 }
 
@@ -15,6 +15,7 @@ a {
 
 
 @import "repetitive_styles.scss";
+@import "bg_color.scss";
 
 // Pages
 
@@ -28,8 +29,11 @@ a {
 
 // Partials
 
+@import "partials/layout/page.scss";
 @import "partials/button/button.scss";
 @import "partials/input/input.scss";
 @import "partials/profile__information/profile__information.scss";
 @import "partials/error/error.scss";
 @import "partials/friend/friend.scss";
+@import "partials/chat/chat.scss";
+@import "partials/message/message.scss"

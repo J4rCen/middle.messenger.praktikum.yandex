@@ -1,0 +1,77 @@
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__chat {
+    display: grid;
+    grid-template-rows: 60px 1fr 60px;
+}
+
+.main__chat_upmenu {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.main__chat_upmenu__info_frend__figure {
+    height: 40px;
+    width: 40px;
+    background-color: silver;
+    border-radius: 50px;
+}
+
+.main__chat_message_area {
+    overflow-y: auto;
+    
+}
+
+.main__chat_downmenu {
+    height: 60px;
+}
+
+.main__chat__form_message {
+    gap: 10px;
+}
+
+.main__chat__input_chat_message {
+    height: 30px;
+    width: 700px;
+    border-radius: 20px;
+}
+
+.main__chat__button_send_message {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    border-radius: 50px;
+    background-color: white;
+}
+
+.main__chat__form_message__button {
+    position: relative;
+    height: 30px;
+    width: 30px;
+}
+
+.main__chat__button_send_message__imag {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.main__chat__button_send_message__imag {
+    height: 18px;
+    width: 18px;
+}
+
+.main__chat_message_area__flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    width: 92%;
+    margin: 10px auto;
+}

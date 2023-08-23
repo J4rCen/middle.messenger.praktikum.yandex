@@ -1,0 +1,38 @@
+<form id="form__registration" class="form__registration login-form__authorization" action="../menu/menu.html">
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_first_name hide">Неверно указано имя</span>
+        {{> input/input name="first_name" class="text-input authorization_input" type="text" placeholder="Имя" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_second_name hide">Неверно указана фамилия</span>
+        {{> input/input name="second_name" class="text-input authorization_input" type="text" placeholder="Фамилия" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_login hide">Неверно указан логин</span>
+        {{> input/input name="login" class="text-input authorization_input" type="text" placeholder="Логин" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_email hide">Неверно указана почта</span>
+        {{> input/input name="email" class="email-input authorization_input" type="email" placeholder="Почта" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_number hide">Неверно указан номер телефона</span>
+        {{> input/input name="phone" class="phone_number-input authorization_input" type="number" placeholder="Номер телефона" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_password hide">Неверно указан пароль</span>
+        {{> input/input name="password" class="password-input authorization_input" type="password" placeholder="Пароль" }}
+    </div>
+
+    <div class="form__error_div">
+        <span class="form__error_messages form_registration__error_repit_password hide">Пароли не совпадают</span>
+        {{> input/input name="repit_password" class="password-input authorization_input" type="password" placeholder="Потверждения пароля" }}
+    </div>    
+    
+    {{> button/button class="authorization_buttons size_h25_w180 bg_color_50AF8A" label="Зарегистрироваться"}}
+</form>
