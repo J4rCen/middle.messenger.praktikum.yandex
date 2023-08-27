@@ -1,13 +1,34 @@
 import template from "./form_authorization.hbs";
 import Block from "../../utils/Block";
 import dataFillingForm from "../../utils/dataFillingForm";
-import addFocusBlur from "../../utils/addFocusBlurEvents";
+import {addBlur, addFocus} from "../../utils/addFocusBlurEvents";
 import { render } from "../../utils/render";
 
 
 export default class FormAuthorization extends Block {
     constructor() {
         super({
+            loginInput: [
+                {
+                    focus: function(e: HTMLFormElement) {
+                        addFocus(e)
+                    },
+                    blur: function(e: HTMLFormElement) {
+                        addBlur(e)
+                    }
+                }
+            ],
+            passwordInput: [
+                {
+                    focus: function(e: HTMLFormElement) {
+                        addFocus(e)
+                    },
+                    blur: function(e: HTMLFormElement) {
+                        addBlur(e)
+                    }
+                }
+                
+            ],
             buttonAuthor: [
                 {
                     class: "form_authorization_submit size_h25_w180 bg_color_50AF8A",
@@ -26,9 +47,6 @@ export default class FormAuthorization extends Block {
                 }
             ], 
         })
-
-        addFocusBlur(this.element as HTMLFormElement)
-        
     }
 
     render() {

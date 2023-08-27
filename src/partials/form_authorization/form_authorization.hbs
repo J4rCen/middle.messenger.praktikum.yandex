@@ -1,12 +1,16 @@
 <form id="form_authorization" class="form_authorization login-form__authorization">
     <div class="form__error_div">
         <span class="form__error_messages form_authorization__error_login hide">Неверный логин</span>
-        {{{input name="login" class="text-input authorization_input" type="text" placeholder="Логин"}}}
+        {{#loginInput}}
+        {{{input name="login" class="text-input authorization_input" type="text" placeholder="Логин" focus=this.focus blur=this.blur}}}
+        {{/loginInput}}
     </div>
     
     <div class="form__error_div">
         <span class="form__error_messages form_authorization__error_password hide">Неверный пароль</span>
-        {{{input name="password" class="password-input authorization_input" type="password" placeholder="Пароль"}}}
+        {{#passwordInput}}
+            {{{input name="password" class="password-input authorization_input" type="password" placeholder="Пароль" focus=this.focus blur=this.blur}}}
+        {{/passwordInput}}
     </div>
     
     {{#buttonAuthor}}

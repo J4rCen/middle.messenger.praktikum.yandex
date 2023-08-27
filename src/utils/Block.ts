@@ -52,9 +52,17 @@ class Block {
     return {props, children};
   }
 
-  _addEvents() {
+  _removeEvents() {
     const {events = {}} = this.props as { events: Record<string, () => void> };
 
+    Object.keys(events).forEach(eventName => {
+      this._element?.removeEventListener(eventName, events[eventName]);
+    });
+  }
+
+  _addEvents() {
+    const {events = {}} = this.props as { events: Record<string, () => void> };
+    
     Object.keys(events).forEach(eventName => {
       this._element?.addEventListener(eventName, events[eventName]);
     });
@@ -97,7 +105,6 @@ class Block {
     if (!nextProps) {
       return;
     }
-
     Object.assign(this.props, nextProps);
   };
 
@@ -106,17 +113,22 @@ class Block {
   }
 
   private _render() {
+    
     const fragment = this.render();
-
+    
+    
     const newElement = fragment.firstElementChild as HTMLElement;
-
+    
     if (this._element) {
       this._element.replaceWith(newElement);
     }
 
+    this._removeEvents();
+    
     this._element = newElement;
 
     this._addEvents();
+
   }
 
   protected compile(template: (context: object) => string, context: object) {
@@ -163,7 +175,6 @@ class Block {
       },
       set(target, prop, value) {
         const oldTarget = {...target}
-
         target[prop] = value;
 
         // Запускаем обновление компоненты

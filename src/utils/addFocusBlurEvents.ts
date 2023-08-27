@@ -1,11 +1,9 @@
-export default function addFocusBlur(formInput: HTMLFormElement) {
-    for(const a in formInput) {
-        if(formInput[a] === "") {
-            return
-        }
-        
-        formInput[a].addEventListener("blur", (e: HTMLFormElement) => {
-        const err = () => e.srcElement.parentNode.children[0].classList.remove("hide");
+function addFocus(element: HTMLFormElement) {
+    element.srcElement.parentNode.children[0].classList.add("hide")
+}
+
+function addBlur(e: HTMLFormElement) {
+    const err = () => e.srcElement.parentNode.children[0].classList.remove("hide");
         
         switch(e.srcElement.name) {
             case "login":
@@ -52,20 +50,13 @@ export default function addFocusBlur(formInput: HTMLFormElement) {
             break;
 
             case "repit_password":
-
-                e.srcElement.value === new FormData(formInput).get("password") && e.srcElement.value !== ""
+                console.log(e)
+                e.srcElement.value === new FormData(e.srcElement.form).get("password") && e.srcElement.value !== ""
                 ? ""
                 : err();
                 
             break;
         }
-    })
-
-    if(formInput[a].name !== "") {
-        formInput[a].addEventListener("focus", (e: HTMLFormElement) => {
-            e.srcElement.parentNode.children[0].classList.add("hide")
-        })
-    }
-        
-    }
 }
+
+export {addBlur, addFocus};

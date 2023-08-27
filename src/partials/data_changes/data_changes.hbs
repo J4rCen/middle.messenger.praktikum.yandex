@@ -2,13 +2,17 @@
     <div>
         <span class="form__error_messages hide">Неверно указано имя</span>
         <p>Имя:</p>
-        {{{input name="first_name" type="text" class="profile-input__change-data"}}}
+        {{#firstNameInput}}
+        {{{input name="first_name" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
+        {{/firstNameInput}}
     </div>
     
     <div>
         <span class="form__error_messages hide">Неверно указана фамилия</span>
         <p>Фамилия:</p>
-        {{{input name="second_name" type="text" class="profile-input__change-data"}}}
+        {{#secondNameInput}}
+        {{{input name="second_name" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
+        {{/secondNameInput}}
     </div>
 
     <div>
@@ -20,19 +24,25 @@
     <div>
         <span class="form__error_messages hide">Неверно указан логин</span>
         <p>Логин:</p>
-        {{{input name="login" type="text" class="profile-input__change-data"}}}
+        {{#loginInput}}
+        {{{input name="login" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
+        {{/loginInput}}
     </div>    
 
     <div>
         <span class="form__error_messages hide">Неверно указана почта</span>
         <p>Почта:</p>
-        {{{input name="email" type="email" class="profile-input__change-data"}}}
+        {{#emailInput}}
+        {{{input name="email" type="email" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
+        {{/emailInput}}
     </div>
 
     <div>
         <span class="form__error_messages hide"> Неверно указан номер телефона</span>
         <p>Телефон:</p>
-        {{{input name="phone" type="number" class="profile-input__change-data"}}}
+        {{#phonInput}}
+        {{{input name="phone" type="number" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
+        {{/phonInput}}
     </div>
 
     <div class="profile__buttons">

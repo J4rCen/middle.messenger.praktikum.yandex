@@ -1,6 +1,6 @@
 import template from "./change_password.hbs";
 import Block from "../../utils/Block";
-import addFocusBlur from "../../utils/addFocusBlurEvents";
+import {addFocus, addBlur} from "../../utils/addFocusBlurEvents";
 import dataFillingForm from "../../utils/dataFillingForm";
 import { render } from "../../utils/render";
 
@@ -8,6 +8,36 @@ export default class FormChangePassword extends Block {
 
     constructor() {
         super({
+            oldPassword: [
+                {
+                    focus: function(e:HTMLFormElement) {
+                        addFocus(e)
+                    },
+                    blur: function(e:HTMLFormElement) {
+                        addBlur(e)
+                    }
+                }
+            ],
+            newPassword: [
+                {
+                    focus: function(e:HTMLFormElement) {
+                        addFocus(e)
+                    },
+                    blur: function(e:HTMLFormElement) {
+                        addBlur(e)
+                    }
+                }
+            ],
+            repitPassword: [
+                {
+                    focus: function(e:HTMLFormElement) {
+                        addFocus(e)
+                    },
+                    blur: function(e:HTMLFormElement) {
+                        addBlur(e)
+                    }
+                }
+            ],
             buttons: [
                 {
                     class: "size_h25_w180 bg_color_50AF8A",
@@ -32,8 +62,6 @@ export default class FormChangePassword extends Block {
                 }
             ]
         })
-
-        addFocusBlur(this.element as HTMLFormElement);
     }
 
     render() {
