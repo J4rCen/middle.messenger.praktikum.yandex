@@ -1,14 +1,15 @@
-<form id="form_authorization" class="form_authorization login-form__authorization" action="../menu/menu.html">
+<form id="form_authorization" class="form_authorization login-form__authorization">
     <div class="form__error_div">
         <span class="form__error_messages form_authorization__error_login hide">Неверный логин</span>
-        {{> input/input name="login" class="text-input authorization_input" type="text" placeholder="Логин"}}
+        {{{input name="login" class="text-input authorization_input" type="text" placeholder="Логин"}}}
     </div>
     
     <div class="form__error_div">
         <span class="form__error_messages form_authorization__error_password hide">Неверный пароль</span>
-        {{> input/input name="password" class="password-input authorization_input" type="password" placeholder="Пароль" }}
+        {{{input name="password" class="password-input authorization_input" type="password" placeholder="Пароль"}}}
     </div>
     
-    {{> button/button class="form_authorization_submit size_h25_w180 bg_color_50AF8A" label="Вход"}}
+    {{#buttonAuthor}}
+        {{{ button class=this.class label=this.label onClick=this.onClick}}}
+    {{/buttonAuthor}}
 </form>
-

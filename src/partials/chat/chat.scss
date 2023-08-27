@@ -49,20 +49,15 @@
     background-color: white;
 }
 
-.main__chat__form_message__button {
-    position: relative;
-    height: 30px;
-    width: 30px;
-}
-
-.main__chat__button_send_message__imag {
-    position: absolute;
-    left: 50%;
+.main__chat__button_send_message::after {
+    content: "";  //  Сюда мнемонику плюс можно поставить если хочешь
+    position: absolute ; // У кнопки position : relative ; нужно поставить
     top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.main__chat__button_send_message__imag {
+    background: url("images/chat/right-arrow.png") no-repeat ; 
+    background-size: 18px;
+    background-position: center;
     height: 18px;
     width: 18px;
 }

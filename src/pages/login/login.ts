@@ -1,15 +1,16 @@
-const formAuthorization = document.querySelector("#form_authorization") as HTMLFormElement;
-import dataFillingForm from "../../utils/dataFillingForm";
-import fillingCheck from "../../utils/addFocusBlurEvents";
+export default `
+    <div>
+        {{#card}}
+        
+        <div class="login-form__buttons-selection display_flex">
+            {{#each buttons}}
+                {{{button class=this.class label=this.label onClick=this.onClick}}}
+            {{/each}}
+        </div>
 
+        {{{ FormAuthorization }}}
+        
 
-formAuthorization?.addEventListener("submit", (e: any) => {
-    e.preventDefault()
-    
-    dataFillingForm(e.target) !== undefined 
-    ? console.log(dataFillingForm(e.target)) 
-    : alert("Проверте правельность ввода");
-    
-});
-
-fillingCheck(formAuthorization);
+        {{/card}}
+    </div>
+`

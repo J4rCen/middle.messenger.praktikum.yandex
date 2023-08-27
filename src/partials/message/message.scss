@@ -4,14 +4,13 @@
     border-radius: 20px;
 }
 
-
 .outgoing__message__div {
     display: flex;
     justify-content: flex-end;
 }
 
-.outgoing__message__div > .type_of__message {
-    background-color: darkblue;
+.outgoing__message__div > .type__message {
+    background-color: #00008b;
 }
 
 .incoming__message__div {
@@ -19,7 +18,6 @@
     justify-content: flex-start;
 }
 
-.incoming__message__div > .type_of__message {
-    background: silver;
+.incoming__message__div > .type__message {
+    background: #c0c0c0;
 }
-
