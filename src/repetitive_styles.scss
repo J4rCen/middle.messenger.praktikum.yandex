@@ -2,6 +2,10 @@
     display: flex;
 }
 
+.hide {
+    display: none;
+}
+
 .form__gap_10px__display_grid {
     display: grid;
     gap: 10px;
@@ -16,10 +20,20 @@
     margin-top: 20px;
 }
 
+.form__error_div {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__error_messages {
+    color: red;
+    font-size: 14px;
+}
+
 // Данные стили повторяються в файлах profile, data_changes и change_password.
 
 .menu__title_profile {
-    background-color: #212A35;
+    background-color: #212a35;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -44,6 +58,6 @@
 }
 
 .menu__title_profile__section_titles {
-    color: white;
+    color: #fff;
     font-size: 24px;
 }
