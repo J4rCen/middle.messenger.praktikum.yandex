@@ -40,6 +40,7 @@ class ChatController {
     updateAvatarChat(file: FormData) {
         try {
             this.api.updateAvatarChat(file)
+            alert("аватарка обновлена")
         } catch(e) {
             alert("При обновлении аватарки произошла ошибка")
             console.error(e)
@@ -47,11 +48,25 @@ class ChatController {
     }
 
     addUserToChat(id: number, userId: number) {
-        this.api.addUsers(id, [userId])
+        try {
+            this.api.addUsers(id, [userId])
+            alert("пользователь добавлен")
+        } catch(e) {
+            alert("Произошла ошибка при добавлении пользователя")
+            console.error(e)
+        }
+        
     }
 
     deleteUserToChat(id: number, userId: number) {
-        this.api.deleteUsers(id, [userId])
+        try {
+            this.api.deleteUsers(id, [userId])
+            alert("пользователь удален")
+        } catch(e) {
+            alert("Произошла ошибка при удаление пользователя")
+            console.error(e)
+        }
+        
     }
 
     async delete(id: number) {
