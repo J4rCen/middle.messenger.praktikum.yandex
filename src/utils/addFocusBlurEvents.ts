@@ -11,10 +11,12 @@ function addBlur(e: HTMLFormElement) {
                 (e.srcElement.value.match(/^[a-z]([a-z0-9_-]){3,20}$/gi)) 
                 ? ""
                 : err();
+                
 
             break;
 
-            case "old_password":
+            case "oldPassword":
+            case "newPassword":
             case "password": 
 
                 (e.srcElement.value.match(/^(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,40}$/g))
@@ -50,8 +52,7 @@ function addBlur(e: HTMLFormElement) {
             break;
 
             case "repit_password":
-                console.log(e)
-                e.srcElement.value === new FormData(e.srcElement.form).get("password") && e.srcElement.value !== ""
+                e.srcElement.value === new FormData(e.srcElement.form).get("newPassword") && e.srcElement.value !== ""
                 ? ""
                 : err();
                 

@@ -1,10 +1,15 @@
-import template from "./error_404"
+import template from "./error_404.hbs"
 import Block from "../../utils/Block"
-import Handlebars from "handlebars"
+import ErrorMessage from "../../partials/error"
 
 export default class Error404Page extends Block {
-    static template = Handlebars.compile(template)
+    
+
+    init() {
+        this.children.error404 = new ErrorMessage({error_number: "404", error_descriptions: "Походу вы не туда попали"})
+    }
+
     render() {
-        return this.compile(Error404Page.template, this.props)
+        return this.compile(template, this.props)
     }
 } 

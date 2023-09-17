@@ -1,54 +1,12 @@
+<div class="profile__information">
+
 <form class="form__change__user-data profile__information__design form__gap_10px__display_grid">
-    <div>
-        <span class="form__error_messages hide">Неверно указано имя</span>
-        <p>Имя:</p>
-        {{#firstNameInput}}
-        {{{input name="first_name" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
-        {{/firstNameInput}}
-    </div>
-    
-    <div>
-        <span class="form__error_messages hide">Неверно указана фамилия</span>
-        <p>Фамилия:</p>
-        {{#secondNameInput}}
-        {{{input name="second_name" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
-        {{/secondNameInput}}
-    </div>
 
-    <div>
-        <span class="form__error_messages hide"></span>
-        <p>Имя в чате:</p>
-        {{{input name="display_name" type="text" class="profile-input__change-data"}}}
-    </div>
-
-    <div>
-        <span class="form__error_messages hide">Неверно указан логин</span>
-        <p>Логин:</p>
-        {{#loginInput}}
-        {{{input name="login" type="text" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
-        {{/loginInput}}
-    </div>    
-
-    <div>
-        <span class="form__error_messages hide">Неверно указана почта</span>
-        <p>Почта:</p>
-        {{#emailInput}}
-        {{{input name="email" type="email" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
-        {{/emailInput}}
-    </div>
-
-    <div>
-        <span class="form__error_messages hide"> Неверно указан номер телефона</span>
-        <p>Телефон:</p>
-        {{#phonInput}}
-        {{{input name="phone" type="number" class="profile-input__change-data" focus=this.focus blur=this.blur}}}
-        {{/phonInput}}
-    </div>
+    {{{input}}} 
 
     <div class="profile__buttons">
-        {{#each buttons}}
-            {{{button class=this.class label=this.label onClick=this.onClick}}}
-        {{/each}}
+        {{{buttons}}}
     </div>
     
 </form>
+</div>

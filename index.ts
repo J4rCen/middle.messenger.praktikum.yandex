@@ -1,50 +1,59 @@
-// utils
-import {render} from "./src/utils/render";
-import {registerComponent} from "./src/utils/resgiterComponent";
+// Utils
+import Router from "./src/utils/Router";
 
-// Partials
-import Card from "./src/layouts/card";
-import Menu from "./src/layouts/menu";
-import Button from "./src/partials/button";
-import Input from "./src/partials/input";
-import Friend from "./src/partials/friend";
-import Image from "./src/partials/image";
-import ListItem from "./src/partials/list_item";
-import Message from "./src/partials/message";
-import Page from "./src/layouts/page";
-import ErrorMessage from "./src/partials/error";
+// Pages
+import {LoginPage} from "./src/pages/login";
+import {RegistrationPage} from "./src/pages/registration";
+import {MenuPage} from "./src/pages/menu";
+import AuthController from "./src/controllers/AuthController";
+import Error404Page from "./src/pages/error_404"
+import Error500Page from "./src/pages/error_500"
 
-// Forms
-import FormAuthorization from "./src/partials/form_authorization";
-import FormRegistration from "./src/partials/form_registration";
-import ProfileInformation from "./src/partials/profile__information";
-import FormChangePassword from "./src/partials/change_password";
-import FormChangeData from "./src/partials/data_changes";
-import FormSendingMessage from "./src/partials/form_sendingMessage";
+enum Routes {
+    Index = "/",
+    Registration = "/registration",
+    Menu = "/menu",
+    ProfilePage = "/profile",
+    ChangeData = "/profile/changeData",
+    ChangePassword = "/profile/changePassword",
+    Error404 = "/Error404",
+    Error500 = "/Error500",
+}
 
-// Page
-import ChatPage from "./src/partials/chat";
+window.addEventListener("DOMContentLoaded", async () => {
+    Router
+    .use(Routes.Index, LoginPage)
+    .use(Routes.Registration, RegistrationPage)
+    .use(Routes.Menu, MenuPage)
+    .use(Routes.ProfilePage, MenuPage)
+    .use(Routes.ChangeData, MenuPage)
+    .use(Routes.ChangePassword, MenuPage)
+    .use(Routes.Error404, Error404Page)
+    .use(Routes.Error500, Error500Page)
 
-registerComponent("card", Card);
-registerComponent("menu", Menu);
-registerComponent("button", Button);
-registerComponent("input", Input);
-registerComponent("image", Image);
-registerComponent("friend", Friend);
-registerComponent("listItem", ListItem);
-registerComponent("message", Message);
-registerComponent("page", Page);
-registerComponent("error", ErrorMessage)
+    let isProtected = true;
+    
+    Router.start()
 
-registerComponent("FormAuthorization", FormAuthorization);
-registerComponent("FormRegistration", FormRegistration);
-registerComponent("ProfileInformation", ProfileInformation);
-registerComponent("FormChangePassword", FormChangePassword);
-registerComponent("FormChangeData", FormChangeData);
-registerComponent("FormSendingMessage", FormSendingMessage)
+    switch (window.location.pathname) {
+        case Routes.Index:
+        case Routes.Registration:
+            isProtected = false
+        break
+    }
 
-registerComponent("ChatPage", ChatPage)
+    try {
+        await AuthController.fetchUser()
 
-window.addEventListener("DOMContentLoaded", () => {
-    render("login")
+        Router.start()
+
+        if(!isProtected) {
+            Router.go(Routes.Menu)
+        }
+    } catch(e) {
+        Router.start()
+        if(isProtected) {
+            Router.go(Routes.Index)
+        }
+    }
 })

@@ -5,12 +5,16 @@
     margin-right: 30px;
 }
 
-.profile__figure__avatar {
+.user_avatar_size {
     height: 80px;
     width: 80px;
-    background-color: silver;
+}   
+
+.profile__figure__avatar {
+    position: relative;
     border-radius: 50px;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .profile__information__avatar {

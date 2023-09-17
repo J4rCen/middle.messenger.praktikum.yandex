@@ -1,0 +1,42 @@
+{{#if selectedChat}}
+    <div class="main__chat">
+
+        <nav class="contex_menu_chata bg_color_212A35 disabled">
+            <form class="gap form__updata_avatarChat">
+                {{{addAvatarChat}}}
+            </form>
+
+            <div class="gap">
+                {{{addUserChat}}}
+            </div>
+
+            <div class="gap">
+                {{{deleteUserChat}}}
+            </div>
+
+            <div class="gap">
+                {{{deleteChat}}}
+            </div>
+        </nav>
+
+        <div class="main__chat_upmenu bg_color_212A35">
+            {{{chatMenuImg}}}
+        </div>
+
+        <div class="main__chat_message_area">
+            <div class="main__chat_message_area__flex">
+                {{{messages}}}
+            </div>
+        </div>
+
+        <div class="main__chat_downmenu bg_color_212A35 flex_center">
+            {{{formSendingMessage}}}
+            <form class="main__chat__form_message flex_center">
+                {{{inputMessage}}}
+                {{{buttonSend}}}
+            </form>
+        </div>
+    </div>
+{{else}}
+    <p>Выбирете чат</p>
+{{/if}}
