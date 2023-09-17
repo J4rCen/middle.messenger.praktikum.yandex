@@ -49,7 +49,7 @@ export default class FormChangePassword extends Block {
                 messageErrorInform: "Пароли не совпадают",
                 description: "Повторить новый пароль:",
                 input: new Input({
-                    name:"repit_password", 
+                    name:"password", 
                     type:"password", 
                     class:"profile-input__change-data",
                     events: {

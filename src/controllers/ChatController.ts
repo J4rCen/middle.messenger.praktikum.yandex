@@ -30,8 +30,6 @@ class ChatController {
                 await MessagesController.connect(chat.id, token)
             });
 
-            console.log(chats)
-
             store.set("chats", chats)
         } catch(e) {
             console.error(e)

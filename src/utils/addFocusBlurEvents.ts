@@ -52,7 +52,8 @@ function addBlur(e: HTMLFormElement) {
             break;
 
             case "repit_password":
-                e.srcElement.value === new FormData(e.srcElement.form).get("newPassword") && e.srcElement.value !== ""
+                console.log(e.srcElement.value)
+                e.srcElement.value === new FormData(e.srcElement.form).get("password") && e.srcElement.value !== ""
                 ? ""
                 : err();
                 
