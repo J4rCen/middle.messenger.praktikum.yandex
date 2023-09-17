@@ -18,4 +18,4 @@ Figma: https://www.figma.com/file/10zG1WYgWkWtA15IDhuwJ1/yandex-praktikum-messen
 
 Проект развернут на Netlify: 
 <br/>
-Страница с сайт: https://64eb35468c80145a582c053a--glittering-pasca-38c1c3.netlify.app/,
+Страница с сайт: https://spontaneous-parfait-a4c2bf.netlify.app/,
