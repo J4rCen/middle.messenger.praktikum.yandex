@@ -31,11 +31,7 @@ class FriendBase extends Block<FriendProps> {
     }
 
     render(): DocumentFragment {
-        return this.compile(template, {...this.props, isSelected: this.props.id === this.props.selectedChat?.id,
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore 
-            idDisplay_name: this.props.last_message.user.display_name === null
-        })
+        return this.compile(template, {...this.props, isSelected: this.props.id === this.props.selectedChat?.id})
     }
 }
 
