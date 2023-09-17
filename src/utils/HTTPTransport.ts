@@ -91,9 +91,6 @@ export enum Method {
         } else {
           xhr.send(JSON.stringify(data));
         }
-      });
-    }
+    });
   }
-
-
-
+}
