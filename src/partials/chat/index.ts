@@ -128,23 +128,17 @@ class ChatPageBase extends Block<MessagesProps> {
             class: "main__chat__input_chat_message", 
             name:"message", 
             type: "text", 
-            placeholder:"Сообщения"
+            placeholder:"Сообщения",
+            events: {
+                keydown: (e) => { e.key === "Enter" ? this.onSubmit() : ""}
+            }
         })
+
         this.children.buttonSend = new Button({
             class: "main__chat__button_send_message",
             type: "button",
             events: {
-                click: () => {
-                    const input = (this.children.inputMessage as Input)
-
-                    if(input.getValue() !== "") {
-                        const message = input.getValue()
-                        MesssagesController.sendMessages(this.props.selectedChat!, message)
-                    } else {
-                        alert("Сообщения не должно быть пустым")
-                    }
-                    
-                }
+                click: () => this.onSubmit()
             }
         })
     }
@@ -153,6 +147,18 @@ class ChatPageBase extends Block<MessagesProps> {
 
         this.children.messages = this.createMessages(_newProps);
         return true
+    }
+
+    private onSubmit() {
+        const input = (this.children.inputMessage as Input)
+
+        if(input.getValue() !== "") {
+            const message = input.getValue()
+            MesssagesController.sendMessages(this.props.selectedChat!, message)
+            input.setValue("")
+        } else {
+            alert("Сообщения не должно быть пустым")
+        }
     }
 
     private createMessages(props: MessagesProps) {

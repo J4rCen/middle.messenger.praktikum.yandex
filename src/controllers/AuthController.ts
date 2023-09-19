@@ -14,7 +14,7 @@ class AuthController {
         try {
             await this.api.signin(data)
             await this.fetchUser()
-            router.go("/menu")
+            router.go("/messenger")
         } catch(e) {
             // throw new Error(`${e}`)
             console.error(e)
@@ -27,7 +27,7 @@ class AuthController {
         try{
             await this.api.signup(data)
             await this.fetchUser()
-            router.go("/menu")
+            router.go("/messenger")
         } catch(e) {
             throw new Error(`${e}`)
         }

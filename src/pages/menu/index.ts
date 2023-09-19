@@ -8,12 +8,12 @@ export class MenuPage extends Block {
     init() {
         
         switch(window.location.pathname) {
-            case "/menu": 
+            case "/messenger": 
                 this.children.interfaceMenu = new InterfaceMenu({})
             break;
-            case "/profile":
-            case "/profile/changeData":
-            case "/profile/changePassword":  
+            case "/settings":
+            case "/settings/changeData":
+            case "/settings/changePassword":  
                 this.children.interfaceMenu = new ProfilePage({})
             break;
         }

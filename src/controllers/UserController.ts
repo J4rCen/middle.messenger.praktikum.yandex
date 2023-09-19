@@ -17,7 +17,7 @@ class UserControllerAPI {
             await this.api.changeProfile(data)
             await this.fetchUser
             alert("Данные успешно обновлены")
-            Router.go("/profile")
+            Router.go("/settings")
         } catch(e) {
             alert("При обновлении данных произошла ошибка")
             console.error(e)
@@ -40,7 +40,7 @@ class UserControllerAPI {
             await this.api.changePassword(data)
             await this.fetchUser;
             alert("Пароль успешно заменен")
-            Router.go("/profile")
+            Router.go("/settings")
         } catch(e) {
             alert("При обновлении пароля произошла ошибка")
             console.error(e)

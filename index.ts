@@ -11,11 +11,11 @@ import Error500Page from "./src/pages/error_500"
 
 enum Routes {
     Index = "/",
-    Registration = "/registration",
-    Menu = "/menu",
-    ProfilePage = "/profile",
-    ChangeData = "/profile/changeData",
-    ChangePassword = "/profile/changePassword",
+    Registration = "/sign-up",
+    Menu = "/messenger",
+    ProfilePage = "/settings",
+    ChangeData = "/settings/changeData",
+    ChangePassword = "/settings/changePassword",
     Error404 = "/Error404",
     Error500 = "/Error500",
 }

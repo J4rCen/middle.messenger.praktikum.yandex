@@ -7,8 +7,9 @@ interface InputProps {
     class: string;
     placeholder?: string;
     events?: {
-        focus: (e: HTMLFormElement) => void;
-        blur: (e: HTMLFormElement) => void;
+        focus?: (e: HTMLFormElement) => void;
+        blur?: (e: HTMLFormElement) => void;
+        keydown?: (e: HTMLFormElement) => void;
     }
 }
 

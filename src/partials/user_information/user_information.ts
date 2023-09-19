@@ -75,7 +75,7 @@ class UserInformationBase extends Block<ProfileInformationUser> {
                 label: "Изменить данные",
                 events: {
                     click: () => {
-                        Router.go('/profile/changeData')
+                        Router.go('/settings/changeData')
                     }
                 }
             }),
@@ -84,7 +84,7 @@ class UserInformationBase extends Block<ProfileInformationUser> {
                 label: "Изменить пароль",
                 events: {
                     click: () => {
-                        Router.go('/profile/changePassword')
+                        Router.go('/settings/changePassword')
                     }
                 }
             })
@@ -98,7 +98,6 @@ class UserInformationBase extends Block<ProfileInformationUser> {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     protected componentDidUpdate(_oldProps: any, newProps: any): boolean {
-
         (this.children.informationProfile as ProfileInformation[]).forEach((input, i) => {
             if(input instanceof UserAvatar && newProps[userInfo[i]] !== undefined) {
                 (input.children.image as Image).setProps({src: urlResources + newProps[userInfo[i]]})

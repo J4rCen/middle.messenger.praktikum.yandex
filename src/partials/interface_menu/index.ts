@@ -64,7 +64,7 @@ export default class InterfaceMenu extends Block {
                 label: "Профиль",
                 events: {
                     click: () => {
-                        Router.go("/profile")
+                        Router.go("/settings")
                     }
                 }
             }),

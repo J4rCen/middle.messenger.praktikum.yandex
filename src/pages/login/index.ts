@@ -21,7 +21,7 @@ export class LoginPage extends Block {
             class: "buttons-selection__registration size_h40_w150 bg_color_8c8c8c",
             events: {
                 click: () => {
-                    Router.go("/registration")
+                    Router.go("/sign-up")
                 }
             }
         })

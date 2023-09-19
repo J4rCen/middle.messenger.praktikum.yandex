@@ -86,7 +86,6 @@ export enum Method {
         if (method === Method.Get || !data) {
           xhr.send();
         } else if(data instanceof FormData) {
-          console.log(data)
           xhr.send(data)
         } else {
           xhr.send(JSON.stringify(data));

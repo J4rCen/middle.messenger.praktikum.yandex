@@ -17,7 +17,7 @@ export default class ImageBackArrow extends Block {
             alt: "Вернуться назад",
             events: {
                 click: () => {
-                    Router.go("/menu")
+                    Router.go("/messenger")
                 }
             }
         })

@@ -6,108 +6,45 @@ import Button from "../button";
 import Router from "../../utils/Router";
 import { inputChangeInfo } from "../inputChangeInfo/inputChangeInfo";
 import UserController from "../../controllers/UserController";
+import { withStore } from "../../utils/Store";
 
+const inputChangeUser = ["login", "display_name", "first_name", "second_name", "email", "phone"]
 
-export default class FormChangeData extends Block {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-types
+const inputChangeUserName: Record<string, Object<inputChangeInfo>> = {
+    first_name: {messageErrorInform: "Неверно указано имя", description: "Имя:"},
+    second_name: {messageErrorInform: "Неверно указана фамилия", description: "Фамилия:"},
+    display_name: {messageErrorInform: "", description: "Имя в чате:"},
+    login: {messageErrorInform: "Неверно указан логин", description: "Логин:"},
+    email: {messageErrorInform: "Неверно указана почта", description: "Почта:"},
+    phone: {messageErrorInform: "Неверно указан номер телефона", description: "Телефон:"}
+}
 
-    constructor() {
-        super({})
-    }
+class FormChangeDataBase extends Block {
 
     init() {
 
-        this.children.input = [
-            new inputChangeInfo({
-                messageErrorInform: "Неверно указано имя",
-                description: "Имя:",
+        this.children.changeAvatarUser =  new inputChangeInfo({
+            description: "Смена аватарки:",
+            input: new Input({
+                name: "avatar", 
+                type: "file", 
+                class: "change_avatar profile-input__change-data",
+            })
+        }),
+
+
+        
+
+        this.children.input = inputChangeUser.map(el => {
+
+            return new inputChangeInfo({
+                ...inputChangeUserName[el],
                 input: new Input({
-                    name: "first_name", 
+                    name: el, 
                     type: "text", 
-                    class: "profile-input__change-data",
-                    events: {
-                        focus: function(e:HTMLFormElement) {
-                            addFocus(e)
-                        },
-                        blur: function(e:HTMLFormElement) {
-                            addBlur(e)
-                        }
-                    }
-                })
-            }),
-            new inputChangeInfo({
-                messageErrorInform: "Неверно указана фамилия",
-                description: "Фамилия:",
-                input: new Input({
-                    name: "second_name", 
-                    type: "text", 
-                    class: "profile-input__change-data",
-                    events: {
-                        focus: function(e:HTMLFormElement) {
-                            addFocus(e)
-                        },
-                        blur: function(e:HTMLFormElement) {
-                            addBlur(e)
-                        }
-                    }
-                })
-            }),
-            new inputChangeInfo({
-                messageErrorInform: "",
-                description: "Имя в чате:",
-                input: new Input({
-                    name: "display_name", 
-                    type: "text", 
-                    class: "profile-input__change-data",
-                    events: {
-                        focus: function(e:HTMLFormElement) {
-                            addFocus(e)
-                        },
-                        blur: function(e:HTMLFormElement) {
-                            addBlur(e)
-                        }
-                    }
-                })
-            }),
-            new inputChangeInfo({
-                messageErrorInform: "Неверно указан логин",
-                description: "Логин:",
-                input: new Input({
-                    name: "login", 
-                    type: "text", 
-                    class: "profile-input__change-data",
-                    events: {
-                        focus: function(e:HTMLFormElement) {
-                            addFocus(e)
-                        },
-                        blur: function(e:HTMLFormElement) {
-                            addBlur(e)
-                        }
-                    }
-                })
-            }), 
-            new inputChangeInfo({
-                messageErrorInform: "Неверно указана почта",
-                description: "Почта:",
-                input: new Input({
-                    name: "email", 
-                    type: "email", 
-                    class: "profile-input__change-data",
-                    events: {
-                        focus: function(e:HTMLFormElement) {
-                            addFocus(e)
-                        },
-                        blur: function(e:HTMLFormElement) {
-                            addBlur(e)
-                        }
-                    }
-                })
-            }),
-            new inputChangeInfo({
-                messageErrorInform: "Неверно указан номер телефона",
-                description: "Телефон:",
-                input: new Input({
-                    name: "phone", 
-                    type: "number", 
                     class: "profile-input__change-data",
                     events: {
                         focus: function(e:HTMLFormElement) {
@@ -119,7 +56,13 @@ export default class FormChangeData extends Block {
                     }
                 })
             })
-        ]
+        })
+
+        this.children.input.forEach(el => {
+            (el.children.input as Input).setValue(this.props[(el.children.input as Input).getName()] === undefined ? "" : this.props[(el.children.input as Input).getName()])
+        })
+        
+        
 
         this.children.buttons = [
             new Button({
@@ -135,25 +78,50 @@ export default class FormChangeData extends Block {
                 label: "Отмена",
                 events: {
                     click: () => {
-                        Router.go("/profile")
+                        Router.go("/settings")
                     }
                 }
             })
         ]
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    protected componentDidUpdate(_oldProps: any, newProps: any): boolean {
+        (this.children.input as inputChangeInfo[]).map(el => {
+            if(newProps[(el.children.input as Input).getName()] !== undefined && (el.children.input as Input).getValue() === "") {
+                (el.children.input as Input).setValue(newProps[(el.children.input as Input).getName()])
+            }
+        })
+
+        return false
+    }
+    
+
     onSubmit() {
+        const formData = new FormData((this.children.changeAvatarUser  as Input).element?.parentNode as HTMLFormElement)
 
         const value = (this.children.input as inputChangeInfo[]).filter(el => (el.children.input as Input).getValue() !== "").map(el => {
             return [(el.children.input as Input).getName(), (el.children.input as Input).getValue()]
         })
 
-        const data = Object.fromEntries(value)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        //@ts-ignore
+        if(formData.get("avatar")?.name !== "") {
+            // console.log(formData.get("avatar"))
+            UserController.changeAvatar(formData)
+        }
 
-        UserController.changeProfile(data)
+
+        if(value.length !== 0) {
+            const data = Object.fromEntries(value)
+            UserController.changeProfile(data)
+        }
     }
 
     render() {
         return this.compile(template, this.props)
     }
 }
+
+const withUser = withStore((state) => ({...state.user}))
+export const FormChangeData = withUser(FormChangeDataBase)

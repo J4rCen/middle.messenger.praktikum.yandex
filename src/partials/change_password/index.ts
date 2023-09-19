@@ -78,7 +78,7 @@ export default class FormChangePassword extends Block {
                 label: "Отмена",
                 events: {
                     click: () => {
-                        Router.go("/profile")
+                        Router.go("/settings")
                     }
                 }
             })
