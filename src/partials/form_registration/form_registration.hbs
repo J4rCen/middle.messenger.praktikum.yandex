@@ -1,54 +1,38 @@
 <form id="form__registration" class="form__registration login-form__authorization">
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_first_name hide">Неверно указано имя</span>
-        {{#firstNameInput}}
-        {{{input name="first_name" class="text-input authorization_input" type="text" placeholder="Имя" focus=this.focus blur=this.blur}}}
-        {{/firstNameInput}}
+        {{{inputFirstName}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_second_name hide">Неверно указана фамилия</span>
-        {{#secondNameInput}}
-        {{{input name="second_name" class="text-input authorization_input" type="text" placeholder="Фамилия" focus=this.focus blur=this.blur}}}
-        {{/secondNameInput}}
+        {{{inputSecondName}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_login hide">Неверно указан логин</span>
-        {{#loginInput}}
-        {{{input name="login" class="text-input authorization_input" type="text" placeholder="Логин" focus=this.focus blur=this.blur}}}
-        {{/loginInput}}
+        {{{inputLogin}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_email hide">Неверно указана почта</span>
-        {{#emailInput}}
-        {{{input name="email" class="email-input authorization_input" type="email" placeholder="Почта" focus=this.focus blur=this.blur}}}
-        {{/emailInput}}
+        {{{inputEmail}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_number hide">Неверно указан номер телефона</span>
-        {{#phonInput}}
-        {{{input name="phone" class="phone_number-input authorization_input" type="number" placeholder="Номер телефона" focus=this.focus blur=this.blur}}}
-        {{/phonInput}}
+        {{{emailPhone}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_password hide">Неверно указан пароль</span>
-        {{#passwordInput}}
-        {{{input name="password" class="password-input authorization_input" type="password" placeholder="Пароль" focus=this.focus blur=this.blur}}}
-        {{/passwordInput}}
+        {{{inputPassword}}}
     </div>
 
     <div class="form__error_div">
         <span class="form__error_messages form_registration__error_repit_password hide">Пароли не совпадают</span>
-        {{#repitPasswordInput}}
-        {{{input name="repit_password" class="password-input authorization_input" type="password" placeholder="Потверждения пароля" focus=this.focus blur=this.blur}}}
-        {{/repitPasswordInput}}
+        {{{inputRepitPassword}}}
     </div>    
     
-    {{#buttonRegistr}}
-        {{{ button class=this.class label=this.label onClick=this.onClick}}}
-    {{/buttonRegistr}}
+    {{{buttonSubmit}}}
 </form>

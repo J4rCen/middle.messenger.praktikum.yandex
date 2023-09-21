@@ -11,10 +11,6 @@ export function registerComponent(name: string, Component: typeof Block) {
     const component = new Component(hash);
     const dataAttribute = `data-id="${component.id}"`;
 
-    if ('ref' in hash) {
-      (data.root.__refs = data.root.__refs || {})[hash.ref] = component;
-    }
-
     (data.root.__children = data.root.__children || []).push({
       component,
       embed(fragment: DocumentFragment) {

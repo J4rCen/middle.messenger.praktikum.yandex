@@ -1,15 +1,12 @@
 <div class="menu__friend_item">
     <div class="friend_item__avatar">
-        <figure class="figure__avatar">
-            <img src="{{avatar}}" alt="">
+        <figure class="profile__figure__avatar bg_color_white chat_avatar_size">
+            {{{avatar}}}
         </figure>
     </div>
+
     <div class="friend_item__messages">
-        <p class="friend_item__messages__login">{{login_friend}}</p>
-        <p class="friend_item__messages__message">{{message_friend}}</p>
-    </div>
-    <div class="friend_item__missed">
-        <p class="friend_item__missed_date">{{message_date}}</p>
-        <span class="friend_item__missed_quantity">{{missed_quantity}}</span>
+        <p class="friend_item__messages__login">{{{title}}}</p>
+        <p class="friend_item__messages__message">{{#if idDisplay_name}} Unknown {{else}}{{{last_message.user.display_name}}}{{/if}}: {{{last_message.content}}}</p>
     </div>
 </div>

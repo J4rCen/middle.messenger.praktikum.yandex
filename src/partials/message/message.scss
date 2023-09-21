@@ -1,23 +1,28 @@
 .messsage__setting {
+    display: flex;
+    flex-direction: column;
     padding: 10px;
     max-width: 500px;
     border-radius: 20px;
 }
 
-.outgoing__message__div {
+.message__div {
     display: flex;
-    justify-content: flex-end;
 }
 
-.outgoing__message__div > .type__message {
-    background-color: #00008b;
-}
-
-.incoming__message__div {
-    display: flex;
+.messageDiv {
     justify-content: flex-start;
 }
 
-.incoming__message__div > .type__message {
-    background: #c0c0c0;
+.message {
+    background: #383838;
+}
+
+.myMessageDiv {
+    justify-content: flex-end;
+}
+
+.myMessage {
+    background: #730797;
+    
 }

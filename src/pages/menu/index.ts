@@ -1,45 +1,28 @@
 import Block from "../../utils/Block";
-import { render } from "../../utils/render";
-import template from "./menu.ts"
-import Handlebars from "handlebars";
-import img from "../../images/menu/menu.png"
+import template from "./menu.hbs"
+import { ChatPage } from "../../partials/chat";
+import InterfaceMenu from "../../partials/interface_menu";
+import ProfilePage from "../profile"
 
 export class MenuPage extends Block {
-    static template = Handlebars.compile(template)
-    constructor() {
-        super({
-            btnImgMenu: [
-                {
-                    class: "img__context-menu",
-                    src: img,
-                    onClick: () => {
-                        const menu = document.querySelector(".menu__contex-menu");
-                        menu?.classList.toggle("disabled")
-                        
-                    }
-                }
-            ],
+    init() {
+        
+        switch(window.location.pathname) {
+            case "/messenger": 
+                this.children.interfaceMenu = new InterfaceMenu({})
+            break;
+            case "/settings":
+            case "/settings/changeData":
+            case "/settings/changePassword":  
+                this.children.interfaceMenu = new ProfilePage({})
+            break;
+        }
 
-            menuList: [
-                {
-                    class: "context-menu__list__items",
-                    label: "Профиль",
-                    onClick: () => {
-                        render("profile")
-                    }
-                },
-                {
-                    class: "context-menu__list__items",
-                    label: "Выйти",
-                    onClick: () => {
-                        render("login")
-                    }
-                }
-            ]
-        })
+        this.children.ChatPage = new ChatPage({})
+        
     }
 
     render() {
-        return this.compile(MenuPage.template, this.props)
+        return this.compile(template, {...this.props})
     }
 }
