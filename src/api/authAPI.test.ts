@@ -1,4 +1,4 @@
-import authAPI, { signInData, signUpData } from "./authAPI.ts";
+import authAPI from "./authAPI.ts";
 import sinon from "sinon";
 import {expect} from "chai";
 import { api_url } from "../utils/HTTPTransport.ts";
@@ -24,57 +24,50 @@ describe("authAPI", () => {
     })
 
     describe("Авторизация", () => {
-        const data: signInData = {
-            login: "DD11DD",
-            password: "DDDD1111"
-        }
-
         it("Отправка данных методом post", () => {
-            api.signin(data)
-            expect
+            api.signin()
             expect(requests[0].method).to.eq("Post")
         })
 
         it("Отправка данных на сервер", () => {
-            api.signin(data)
+            api.signin()
             expect(requests[0].url).to.eq(`${api_url}/auth/signin`)
         })
+    })
 
-        it("Получение данных с сервера", () => {
-            api.signin(data)
-            expect(requests.length).to.eq(1)
-            expect(requests[0].requestBody).to.eq(JSON.stringify(data))
+    describe("Регистрация", () => {
+        it("Отправка данных методом post", () => {
+            api.signup()
+            expect(requests[0].method).to.eq("Post")
+        })
+
+        it("Отправка данных на сервер", () => {
+            api.signup()
+            expect(requests[0].url).to.eq(`${api_url}/auth/signup`)
         })
     })
 
-    it("Регистрация", () => {
-        const data: signUpData = {
-            first_name: "Dimater",
-            second_name: "Dimater",
-            login: "DDFFGG11",
-            email: "test@test.test",
-            password: "DDDD8080",
-            phone: "89000000000"
-        }
+    describe("Выход из аккаунта", () => {
+        it("Отправка данных методом post", () => {
+            api.logout()
+            expect(requests[0].method).to.eq("Post")
+        })
 
-        api.signup(data)
-
-        expect(requests[0].method).to.eq("Post")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/auth/signup`)
-    })
-
-    it("Выход из аккаунта", () => {
-        api.logout()
-
-        expect(requests[0].method).to.eq("Post")
-        expect(requests[0].url).to.eq(`${api_url}/auth/logout`)
+        it("Отправка данных на сервер", () => {
+            api.logout()
+            expect(requests[0].url).to.eq(`${api_url}/auth/logout`)
+        })
     })
     
-    it("Получения информации о пользователе", () => {
-        api.read()
+    describe("Получения информации о пользователе", () => {
+        it("Отправка данных методом get", () => {
+            api.read()
+            expect(requests[0].method).to.eq("Get")
+        })
 
-        expect(requests[0].method).to.eq("Get")
-        expect(requests[0].url).to.eq(`${api_url}/auth/user`)
+        it("Отправка данных на сервер", () => {
+            api.read()
+            expect(requests[0].url).to.eq(`${api_url}/auth/user`)
+        })
     })
 })

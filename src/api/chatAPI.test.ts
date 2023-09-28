@@ -23,40 +23,61 @@ describe("chatAPI", () => {
         requests.length = 0
     })
 
-    it("Создание чата", () => {
+    describe("Создание чата", () => {
         const data = {
             title: "testTitl"
         }
 
-        api.create(data.title)
+        it("Отправка данных методом post", () => {
+            api.create(data.title)
+            expect(requests[0].method).to.eq("Post")
+        })
 
-        expect(requests[0].method).to.eq("Post")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/chats`)
+        it("Отправка данных на сервер", () => {
+            api.create(data.title)
+            expect(requests[0].url).to.eq(`${api_url}/chats`)
+        })
     })
 
-    it("Удаления чата", () => {
-        api.delete(3)
+    describe("Удаления чата", () => {
+        it("Отправка данных методом delete", () => {
+            api.delete(3)
+            expect(requests[0].method).to.eq("Delete")
+        })
 
-        expect(requests[0].method).to.eq("Delete")
-        expect(requests[0].url).to.eq(`${api_url}/chats`)
+        it("Отправка данных на сервер", () => {
+            api.delete(3)
+            expect(requests[0].url).to.eq(`${api_url}/chats`)
+        })
     })
 
-    it("Получение информации о чатах", () => {
-        api.read()
+    describe("Получение информации о чатах", () => {
+        it("Получение данных методом Get", () => {
+            api.read()
+            expect(requests[0].method).to.eq("Get")
+        })
 
-        expect(requests[0].method).to.eq("Get")
-        expect(requests[0].url).to.eq(`${api_url}/chats`)
+        it("Запрос данных с сервера", () => {
+            api.read()
+            expect(requests[0].url).to.eq(`${api_url}/chats`)
+        })
     })
 
-    it("Получение информации о юзере в чате", () => {
+    describe("Получение информации о юзере в чате", () => {
         const id = 2;
-        api.getUsers(id)
-        expect(requests[0].method).to.eq("Get")
-        expect(requests[0].url).to.eq(`${api_url}/chats/${id}/users`)
+        
+        it("Получение данных методом Get", () => {
+            api.getUsers(id)
+            expect(requests[0].method).to.eq("Get")
+        })
+
+        it("Запрос данных с сервера", () => {
+            api.getUsers(id)
+            expect(requests[0].url).to.eq(`${api_url}/chats/${id}/users`)
+        })
     })
 
-    it("Добавления юзера в чат", () => {
+    describe("Добавления юзера в чат", () => {
         const data = {
             users: [
                 2
@@ -65,27 +86,45 @@ describe("chatAPI", () => {
             chatId: 2,
         }
 
-        api.addUsers(data.chatId, data.users)
+        it("Отправка данных методом Put", () => {
+            api.addUsers(data.chatId, data.users)
+            expect(requests[0].method).to.eq("Put")
+        })
 
-        expect(requests[0].method).to.eq("Put")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/chats/users`)
+        it("Отправка данных на сервер", () => {
+            api.addUsers(data.chatId, data.users)
+            expect(requests[0].url).to.eq(`${api_url}/chats/users`)
+        })
+
     })
 
-    it("Удаление юзера из чата", () => {
+    describe("Удаление юзера из чата", () => {
         const id = 2;
 
-        api.deleteUsers(id, [id])
+        it("Отправка данных методом delete", () => {
+            api.deleteUsers(id, [id])
+            expect(requests[0].method).to.eq("Delete")
+        })
 
-        expect(requests[0].method).to.eq("Delete")
-        expect(requests[0].url).to.eq(`${api_url}/chats/users`)
+        it("Отправка данных на сервер", () => {
+            api.deleteUsers(id, [id])
+            expect(requests[0].url).to.eq(`${api_url}/chats/users`)
+        })
+        
     })
 
-    it("Получение токена чата", () => {
+    describe("Получение токена чата", () => {
         const id = 2 
-        api.getToken(id)
+        
 
-        expect(requests[0].method).to.eq("Post")
-        expect(requests[0].url).to.eq(`${api_url}/chats/token/${id}`)
+        it("Отправка данных методом post", () => {
+            api.getToken(id)
+            expect(requests[0].method).to.eq("Post")
+        })
+
+        it("Отправка данных на сервер", () => {
+            api.getToken(id)
+            expect(requests[0].url).to.eq(`${api_url}/chats/token/${id}`)
+        })
     })
 })

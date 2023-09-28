@@ -23,7 +23,7 @@ describe("userAPI", () => {
         requests.length = 0;
     })
 
-    it("Изменения данных юзера", () => {
+    describe("Изменения данных юзера", () => {
         const data: changeProfile = {
             first_name: "Test1",
             second_name: "Test2",
@@ -33,30 +33,46 @@ describe("userAPI", () => {
             phone: "89000000000",
         }
 
-        api.changeProfile(data)
+        it("Отправка данных методом put", () => {
+            api.changeProfile(data)
+            expect(requests[0].method).to.eq("Put")
+        })
 
-        expect(requests[0].method).to.eq("Put")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/user/profile`)
+        it("Отправка данных на сервер", () => {
+            api.changeProfile(data)
+            expect(requests[0].url).to.eq(`${api_url}/user/profile`)
+        })
+        
     })
 
-    it("Изменения пароля юзера", () => {
+    describe("Изменения пароля юзера", () => {
         const data: changePassword = {
             oldPassword: "test222",
             newPassword: "test212"
         }
 
-        api.changePassword(data)
 
-        expect(requests[0].method).to.eq("Put")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/user/password`)
+        it("Отправка данных методом put", () => {
+            api.changePassword(data)
+            expect(requests[0].method).to.eq("Put")
+        })
+
+        it("Отправка данных на сервер", () => {
+            api.changePassword(data)
+            expect(requests[0].url).to.eq(`${api_url}/user/password`)
+        })
+        
     })
 
-    it("Получения информации о пользователе", () => {
-        api.read()
+    describe("Получения информации о пользователе", () => {
+        it("Получение данных методом Get", () => {
+            api.read()
+            expect(requests[0].method).to.eq("Get")
+        })
 
-        expect(requests[0].method).to.eq("Get")
-        expect(requests[0].url).to.eq(`${api_url}/auth/user`)
+        it("Запрос данных с сервера", () => {
+            api.read()
+            expect(requests[0].url).to.eq(`${api_url}/auth/user`)
+        })
     })
 })

@@ -19,11 +19,11 @@ export class authAPI extends baseAPI {
         super()
     }
 
-    signin(data: signInData) {
+    signin(data?: signInData) {
         return this.http.post("/auth/signin", data)
     }
 
-    signup(data: signUpData) {
+    signup(data?: signUpData) {
         return this.http.post("/auth/signup", data)
     }
 
