@@ -1,5 +1,5 @@
 import template from "./input.hbs";
-import Block from "../../utils/Block";
+import Block from "../../utils/Block.ts";
 
 interface InputProps {
     name: string;

@@ -1,6 +1,6 @@
-import API, {userAPI, changeProfile, changePassword} from "../api/userAPI";
-import Router from "../utils/Router";
-import store from "../utils/Store";
+import API, {userAPI, changeProfile, changePassword} from "../api/userAPI.ts";
+import Router from "../utils/Router.ts";
+import store from "../utils/Store.ts";
 
 export const urlResources = "https://ya-praktikum.tech/api/v2/resources/"
 
