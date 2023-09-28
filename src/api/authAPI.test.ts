@@ -31,6 +31,7 @@ describe("authAPI", () => {
 
         it("Отправка данных методом post", () => {
             api.signin(data)
+            expect
             expect(requests[0].method).to.eq("Post")
         })
 
@@ -41,6 +42,7 @@ describe("authAPI", () => {
 
         it("Получение данных с сервера", () => {
             api.signin(data)
+            expect(requests.length).to.eq(1)
             expect(requests[0].requestBody).to.eq(JSON.stringify(data))
         })
     })
