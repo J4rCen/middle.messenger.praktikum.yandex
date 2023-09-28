@@ -23,27 +23,35 @@ describe("authAPI", () => {
         requests.length = 0;
     })
 
-    it("Авторизация", () => {
-        
+    describe("Авторизация", () => {
         const data: signInData = {
-            login: "test",
-            password: "test"
+            login: "DD11DD",
+            password: "DDDD1111"
         }
 
-        api.signin(data)
+        it("Отправка данных методом post", () => {
+            api.signin(data)
+            expect(requests[0].method).to.eq("Post")
+        })
 
-        expect(requests[0].method).to.eq("Post")
-        expect(requests[0].requestBody).to.eq(JSON.stringify(data))
-        expect(requests[0].url).to.eq(`${api_url}/auth/signin`)
+        it("Отправка данных на сервер", () => {
+            api.signin(data)
+            expect(requests[0].url).to.eq(`${api_url}/auth/signin`)
+        })
+
+        it("Получение данных с сервера", () => {
+            api.signin(data)
+            expect(requests[0].requestBody).to.eq(JSON.stringify(data))
+        })
     })
 
     it("Регистрация", () => {
         const data: signUpData = {
-            first_name: "test1",
-            second_name: "test2",
-            login: "test3",
+            first_name: "Dimater",
+            second_name: "Dimater",
+            login: "DDFFGG11",
             email: "test@test.test",
-            password: "test8080",
+            password: "DDDD8080",
             phone: "89000000000"
         }
 
