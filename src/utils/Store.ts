@@ -1,9 +1,9 @@
-import { EventBus } from "./EventBus";
-import { set } from "./helpers";
-import { User } from "../api/userAPI";
-import Block from "./Block";
-import { ChatInfo } from "../api/chatAPI";
-import {Messages} from "../controllers/MessagesController"
+import { EventBus } from "./EventBus.ts";
+import { set } from "./helpers.ts";
+import { User } from "../api/userAPI.ts";
+import Block from "./Block.ts";
+import { ChatInfo } from "../api/chatAPI.ts";
+import {Messages} from "../controllers/MessagesController.ts"
 
 export enum StoreEvents {
   Updated = 'updated'

@@ -1,7 +1,7 @@
 import Block from './Block';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-interface BlockConstructable<P extends Record<string, any> = any> {
+export interface BlockConstructable<P extends Record<string, any> = any> {
   new(props: P): Block<P>;
 }
 
@@ -52,7 +52,7 @@ class Route {
 }
 
 class Router {
-  private static __instance: Router;
+  private static __instance?: Router;
   private routes: Route[] = [];
   private currentRoute: Route | null = null;
   private history = window.history;
@@ -112,6 +112,11 @@ class Router {
 
   public forward() {
     this.history.forward();
+  }
+
+  public reset() {
+    delete Router.__instance;
+    new Router(this.rootQuery)
   }
 
   private getRoute(pathname: string) {

@@ -2,7 +2,6 @@ export enum Method {
     Get = 'Get',
     Post = 'Post',
     Put = 'Put',
-    Patch = 'Patch',
     Delete = 'Delete'
   }
   
@@ -11,6 +10,8 @@ export enum Method {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data?: any;
   };
+
+  export const api_url = "https://ya-praktikum.tech/api/v2"
   
   export default class HTTPTransport {
     static API_URL = 'https://ya-praktikum.tech/api/v2';
@@ -34,13 +35,6 @@ export enum Method {
     public put<Response = void>(path: string, data: unknown): Promise<Response> {
       return this.request<Response>(this.endpoint + path, {
         method: Method.Put,
-        data,
-      });
-    }
-  
-    public patch<Response = void>(path: string, data: unknown): Promise<Response> {
-      return this.request<Response>(this.endpoint + path, {
-        method: Method.Patch,
         data,
       });
     }
@@ -88,7 +82,12 @@ export enum Method {
         } else if(data instanceof FormData) {
           xhr.send(data)
         } else {
-          xhr.send(JSON.stringify(data));
+          try {
+            xhr.send(JSON.stringify(data));
+          } catch(e) {
+            alert("Произошла ошибка при отправки на сервер")
+            console.error(e)
+          }
         }
     });
   }

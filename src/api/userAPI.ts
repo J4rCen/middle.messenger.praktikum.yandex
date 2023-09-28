@@ -1,4 +1,4 @@
-import baseAPI from "./baseAPI";
+import baseAPI from "./baseAPI.ts";
 
 export interface User {
     id: number | string,

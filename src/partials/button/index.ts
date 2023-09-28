@@ -1,9 +1,9 @@
 import template from "./button.hbs";
-import Block from "../../utils/Block";
+import Block from "../../utils/Block.ts";
 
 interface ButtonProps {
     label?: string;
-    class: string;
+    class?: string;
     type?: string;
     events?: {
         click?: (e: HTMLFormElement) => void;
